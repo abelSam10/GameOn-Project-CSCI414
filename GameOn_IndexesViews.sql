@@ -2,10 +2,12 @@
 -- INDEXES (Performance Optimization)
 -- ============================================================
 
+-- DEPRECATED: Replaced by MongoDB
 -- Users: frequent lookups by email and role
 CREATE INDEX idx_users_email ON users(email);
 CREATE INDEX idx_users_role ON users(role);
 
+-- DEPRECATED: Replaced by MongoDB
 -- Games: filter by sport, location, status, and scheduled time
 CREATE INDEX idx_games_sport ON games(sport_id);
 CREATE INDEX idx_games_location ON games(location_id);
@@ -13,6 +15,7 @@ CREATE INDEX idx_games_status ON games(status);
 CREATE INDEX idx_games_scheduled ON games(scheduled_time);
 CREATE INDEX idx_games_created_by ON games(created_by);
 
+-- DEPRECATED: Replaced by MongoDB
 -- Game Players: lookup by game or user
 CREATE INDEX idx_game_players_game ON game_players(game_id);
 CREATE INDEX idx_game_players_user ON game_players(user_id);
@@ -43,6 +46,7 @@ CREATE INDEX idx_locations_coords ON locations(latitude, longitude);
 -- VIEWS
 -- ============================================================
 
+-- DEPRECATED: Replaced by MongoDB
 -- View 1: Active/open games with sport name and location details
 CREATE OR REPLACE VIEW vw_active_games AS
 SELECT
@@ -65,6 +69,7 @@ JOIN locations l ON g.location_id = l.location_id
 JOIN users u ON g.created_by = u.user_id
 WHERE g.status IN ('open', 'full', 'in_progress');
 
+-- DEPRECATED: Replaced by MongoDB
 -- View 2: Player profile summary with sports and stats
 CREATE OR REPLACE VIEW vw_player_profiles AS
 SELECT
@@ -83,6 +88,7 @@ LEFT JOIN game_players gp ON u.user_id = gp.user_id
 GROUP BY u.user_id, u.first_name, u.last_name, u.email,
          u.role, u.skill_level, u.bio, u.created_at;
 
+-- DEPRECATED: Replaced by MongoDB
 -- View 3: Game results with team scores
 CREATE OR REPLACE VIEW vw_game_results AS
 SELECT

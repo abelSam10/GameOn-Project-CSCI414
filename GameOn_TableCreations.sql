@@ -8,6 +8,7 @@
 -- CORE ENTITIES
 -- ============================================================
 
+-- DEPRECATED: Replaced by MongoDB
 -- Users: all platform members (players, agents, scouts, organizers)
 CREATE TABLE users (
     user_id       SERIAL PRIMARY KEY,
@@ -54,6 +55,7 @@ CREATE TABLE locations (
     capacity      INT
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- Games: scheduled or active pickup games
 CREATE TABLE games (
     game_id         SERIAL PRIMARY KEY,
@@ -69,6 +71,7 @@ CREATE TABLE games (
     created_at      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- Teams: teams within a game (e.g., Team A vs Team B)
 CREATE TABLE teams (
     team_id   SERIAL PRIMARY KEY,
@@ -81,6 +84,7 @@ CREATE TABLE teams (
 -- JUNCTION / BRIDGE TABLES
 -- ============================================================
 
+-- DEPRECATED: Replaced by MongoDB
 -- Game Players: which user joined which game, on which team, at which position
 CREATE TABLE game_players (
     game_player_id SERIAL PRIMARY KEY,
@@ -94,6 +98,7 @@ CREATE TABLE game_players (
     UNIQUE (game_id, user_id)  -- a user can only join a game once
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- Game Stats: per-player-per-game performance stats. Stat value can be changed to a multi variable vector to represent stats
 CREATE TABLE game_stats (
     stat_id        SERIAL PRIMARY KEY,
@@ -111,6 +116,7 @@ CREATE TABLE game_results (
     notes           TEXT
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- User Sports: many-to-many between users and sports
 CREATE TABLE user_sports (
     user_sport_id    SERIAL PRIMARY KEY,
@@ -120,6 +126,7 @@ CREATE TABLE user_sports (
     UNIQUE (user_id, sport_id)
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- User Positions: many-to-many between users and positions
 CREATE TABLE user_positions (
     user_position_id SERIAL PRIMARY KEY,
@@ -144,6 +151,7 @@ CREATE TABLE clubs (
     founded_year INT
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- Agents: extend user data for agent-specific info (1:1 with users)
 CREATE TABLE agents (
     agent_id       SERIAL PRIMARY KEY,
@@ -161,6 +169,7 @@ CREATE TABLE sponsors (
     website       VARCHAR(255)
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- Club Members: many-to-many between clubs and users
 CREATE TABLE club_members (
     club_member_id SERIAL PRIMARY KEY,
@@ -183,6 +192,7 @@ CREATE TABLE club_sponsors (
     UNIQUE (club_id, sponsor_id)
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- Club Agents: many-to-many between clubs and agents
 CREATE TABLE club_agents (
     club_agent_id  SERIAL PRIMARY KEY,
@@ -193,6 +203,7 @@ CREATE TABLE club_agents (
     UNIQUE (club_id, agent_id)
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- User Agents: many-to-many between users (athletes) and agents
 CREATE TABLE user_agents (
     user_agent_id SERIAL PRIMARY KEY,
@@ -203,6 +214,7 @@ CREATE TABLE user_agents (
     UNIQUE (user_id, agent_id)
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- User Sponsors: many-to-many between users (athletes) and sponsors
 CREATE TABLE user_sponsors (
     user_sponsor_id SERIAL PRIMARY KEY,

@@ -1,0 +1,110 @@
+db.createCollection("Users");
+
+// Insert a sample user document
+db.Users.insert(
+    {
+        "id": "123",
+        "firstName": "Colin",
+        "lastName": "Tormanen",
+        "contactInfo": {
+            "email": "colin.tormanen@go.stcloudstate.edu",
+            "phone": "6121234422"
+        },
+        "role": {
+            "type": "player",
+            "skill_level": 3,
+        },
+        "bio": "Terrible at sports :(",
+        "createDate": Date,
+        "lastUpdated": Date,
+        "sports": [
+            { 
+                "sportId": sport123,
+                "positions": [ pos1, pos4 ]
+            },
+            { 
+                "sportId": sport143,
+                "positions": [ pos2 ]
+            }
+        ],
+        "clubs": [
+            {
+                "clubId": club2,
+                "role": "Member",
+                "joinDate": Date
+            }
+        ],
+        "sponsors": [
+            {
+                "sponsorId": sponsor123,
+                "amount": 12.51,
+                "startDate": Date,
+                "endDate": Date
+            }
+        ]
+    }
+);
+
+db.createCollection("User_Stats");
+
+// Insert a sample User stat document
+db.User_Stats.insert(
+    {
+        "userId": user1234,
+        "gameId": game1234,
+        "stats": [
+            { "pointsScored": 10 },
+            { "penalties": 2},
+            { "playTime": 14.25}
+        ]
+    }
+);
+
+db.createCollection("Games");
+
+db.Games.insert(
+    {
+        "id": game1234,
+        "sportId": sport123,
+        "locationId": loc123,
+        "createdBy": UserId,
+        "createDate": Date,
+        "status": "open",
+        "scheduledDate": Date,
+        "teams": [
+            {
+                "name": "Team A",
+                "maxPlayers": 5,
+                "currentPlayers": [
+                    player1234, player2421
+                ],
+                "openPositions": [
+                    position1, position2, position5
+                ]
+            },
+            {
+                "name": "Team B",
+                "maxPlayers": 5,
+                "currentPlayers": [
+                    player1236, player4421
+                ],
+                "openPositions": [
+                    position1, position4, position5
+                ]
+            }
+        ]
+    }
+);
+
+db.createCollection("Game_Results");
+
+db.Game_Results.insert(
+    {
+        "id": result123,
+        "gameId": game1234,
+        "winningTeam": "Team A",
+        "totalGameTime": 125.50,
+        "startDate": Date,
+        "MVP": user123
+    }
+);
