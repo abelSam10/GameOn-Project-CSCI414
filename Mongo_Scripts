@@ -154,3 +154,6 @@ db.User_Stats.createIndex({ gameId: 1});
 db.Games.createIndex({ sportId: 1 });
 db.Games.createIndex({ locationId: 1 });
 
+// Game_Results
+db.Game_Results.createIndex({ gameId: 1});
+db.Game_Results.createIndex({ winningTeam: 1});
