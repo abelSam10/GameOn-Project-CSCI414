@@ -107,6 +107,7 @@ CREATE TABLE game_stats (
     stat_value     INT NOT NULL DEFAULT 0
 );
 
+-- DEPRECATED: Replaced by MongoDB
 -- Game Results: outcome of a completed game
 CREATE TABLE game_results (
     result_id       SERIAL PRIMARY KEY,

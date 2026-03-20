@@ -1,3 +1,4 @@
+// ==== Users Collection ==== //
 db.createCollection("Users");
 
 // Insert a sample user document
@@ -45,6 +46,12 @@ db.Users.insert(
     }
 );
 
+// Example get queries
+db.Users.find().pretty();   // Returns all users
+db.Users.find({ firstName: { $regex: "^Co", $options: "i" } }).pretty(); // Returns users with first name that start with c0
+
+
+// ==== User_Stats Collection ==== //
 db.createCollection("User_Stats");
 
 // Insert a sample User stat document
@@ -60,8 +67,15 @@ db.User_Stats.insert(
     }
 );
 
+// Sample queries
+db.User_Stats.find().pretty();
+db.User_Stats.find({ userId: "user1234" }).pretty();
+
+
+// ==== Games Collection ==== //
 db.createCollection("Games");
 
+// Insert a sample document
 db.Games.insert(
     {
         "id": game1234,
@@ -96,6 +110,17 @@ db.Games.insert(
     }
 );
 
+// Sample queries
+db.Games.find({ sportId: "sport123" }).pretty();
+db.Games.find(
+    { 
+        sportId: "sport123", 
+        scheduledDate: new Date("2026-03-19") 
+    }
+).pretty();
+
+// ==== Game Results Collection ==== //
+
 db.createCollection("Game_Results");
 
 db.Game_Results.insert(
@@ -108,3 +133,24 @@ db.Game_Results.insert(
         "MVP": user123
     }
 );
+
+// Sample queries
+db.Game_Results.find().pretty();
+db.Game_Results.find({ gameId: "game1234" }).pretty();
+
+// ==== Indexes ==== //
+
+// Users
+db.Users.createIndex(
+    { firstName: 1, lastName: 1 },
+    { unique: false }
+);
+
+// User_Stats
+db.User_Stats.createIndex({ userId: 1 });
+db.User_Stats.createIndex({ gameId: 1});
+
+// Games
+db.Games.createIndex({ sportId: 1 });
+db.Games.createIndex({ locationId: 1 });
+
